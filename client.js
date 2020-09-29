@@ -41,3 +41,40 @@ const employees = [
 // Ask questions when you don't.
 
 console.log( employees );
+
+function employeeInfo (myArray) {
+  for (let index = 0; index < myArray.length; index++) {
+   return employeeRating(myArray[index])
+    console.log('we are in the myArray loop' , myArray[index]);
+    
+    
+  }
+}
+// this function takes an object and returns value
+function employeeRating (employee){
+  if (employee.reviewRating <= 2){
+    return 0;
+  }
+  else if (employee.reviewRating == 3) {
+    return .04;
+  }
+  else if (employee.reviewRating == 4){
+    return .06;
+  }
+  else if (employee.reviewRating == 5){
+    return .1;
+  }
+  }
+// this function takes object and returns value based on employeeNumber
+function employeeTime(employee) {
+  if (employee.employeeNumber.length == 4){
+    return .05;
+  }
+  else return 0;
+}  
+function maxSalery(employee){
+  if (Number(employee.annualSalary) > 65000) {
+    return .01
+  } 
+  return 0;
+}
