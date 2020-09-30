@@ -39,8 +39,10 @@ const employees = [
 
 // This is not a race. Everyone on your team should understand what is happening.
 // Ask questions when you don't.
-
+$( document ).ready( readynow );
 console.log( employees );
+console.log('in JQ');
+
 
 function employeeInfo (myArray) {
   for (let index = 0; index < myArray.length; index++) {
@@ -67,7 +69,8 @@ function employeeRating (employee){
   }
 // this function takes object and returns value based on employeeNumber
 function employeeTime(employee) {
-  if ((employee.employeeNumber).length === 4){
+  let number = Number(employee.employeeNumber);
+  if (number < 10000){
     return .05;
   }
   else return 0;
@@ -83,9 +86,16 @@ function totalBonusPecentage(employee){
   percent += employeeRating(employee);
   percent += employeeTime(employee);
   percent -= maxSalery(employee);
+    if (percent >= .14){
+      return .13
 
-  return percent;
+    } 
+    else if (percent < 0){
+      return 0;
+    }
+     return percent;   
 }
+
 
 function calculateCompensation(employee){
   return (totalBonusPecentage(employee) * Number(employee.annualSalary)) + Number(employee.annualSalary)
@@ -93,12 +103,24 @@ function calculateCompensation(employee){
 
 function employeeFinal(employee){
   let name = employee.name;
-  let bonusPercentage = totalBonusPecentage(employees);
+  let bonusPercentage = totalBonusPecentage(employee);
   let totalEmployeeComp = calculateCompensation(employee);
 
-  let totalBonusCalc = Math.round(totalBonusPecentage * Number(employee.annualSalary));
+  let totalBonusCalc = Math.round(bonusPercentage * Number(employee.annualSalary));
   return {name: name,
           bonusPercentage: bonusPercentage,
           totalCompensation: totalEmployeeComp,
           totalBonus: totalBonusCalc};
 }
+
+function readynow () {
+  $( '#bonusTime').on( 'click' , displayEmployeeInfo )}
+
+  // this function will displace Employee info inside of UL on DOM
+  function displayEmployeeInfo() {
+    let el = $('#employeeList');
+    for (let index = 0; index < employees.length; index++) {
+      let employeePrint = employeeFinal( employees[index]);
+      el.append( '<li>' + employeePrint.name + ' ' + employeePrint.bonusPercentage + ' ' + employeePrint.totalCompensation + ' ' + employeePrint.totalBonus +  '</li>' );
+    }
+  }
