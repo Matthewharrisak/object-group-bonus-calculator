@@ -44,7 +44,7 @@ console.log( employees );
 
 function employeeInfo (myArray) {
   for (let index = 0; index < myArray.length; index++) {
-   return employeeRating(myArray[index])
+   return employeeRating(myArray[index]);
     console.log('we are in the myArray loop' , myArray[index]);
 
 
@@ -67,14 +67,15 @@ function employeeRating (employee){
   }
 // this function takes object and returns value based on employeeNumber
 function employeeTime(employee) {
-  if ((employee.employeeNumber).length === 4){
+  let number = Number(employee.employeeNumber);
+  if (number < 10000){
     return .05;
   }
   else return 0;
 }
 function maxSalery(employee){
   if (Number(employee.annualSalary) > 65000) {
-    return .01
+    return .01;
   }
   return 0;
 }
@@ -88,15 +89,15 @@ function totalBonusPecentage(employee){
 }
 
 function calculateCompensation(employee){
-  return (totalBonusPecentage(employee) * Number(employee.annualSalary)) + Number(employee.annualSalary)
+  return (totalBonusPecentage(employee) * Number(employee.annualSalary) + Number(employee.annualSalary));
 }
 
 function employeeFinal(employee){
   let name = employee.name;
-  let bonusPercentage = totalBonusPecentage(employees);
+  let bonusPercentage = totalBonusPecentage(employee);
   let totalEmployeeComp = calculateCompensation(employee);
 
-  let totalBonusCalc = Math.round(totalBonusPecentage * Number(employee.annualSalary));
+  let totalBonusCalc = Math.round(bonusPercentage * Number(employee.annualSalary));
   return {name: name,
           bonusPercentage: bonusPercentage,
           totalCompensation: totalEmployeeComp,
