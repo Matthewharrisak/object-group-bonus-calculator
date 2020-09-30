@@ -46,7 +46,7 @@ console.log('in JQ');
 
 function employeeInfo (myArray) {
   for (let index = 0; index < myArray.length; index++) {
-   return employeeRating(myArray[index])
+   return employeeRating(myArray[index]);
     console.log('we are in the myArray loop' , myArray[index]);
 
 
@@ -77,7 +77,7 @@ function employeeTime(employee) {
 }
 function maxSalery(employee){
   if (Number(employee.annualSalary) > 65000) {
-    return .01
+    return .01;
   }
   return 0;
 }
@@ -98,7 +98,7 @@ function totalBonusPecentage(employee){
 
 
 function calculateCompensation(employee){
-  return (totalBonusPecentage(employee) * Number(employee.annualSalary)) + Number(employee.annualSalary)
+  return (totalBonusPecentage(employee) * Number(employee.annualSalary) + Number(employee.annualSalary));
 }
 
 function employeeFinal(employee){
